@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 
 @Slf4j
-public class App extends Application {
+public class Bapp extends Application {
   private static Stage _primaryStage;
 
   public static Stage getPrimaryStage() { return _primaryStage; }
@@ -19,11 +19,11 @@ public class App extends Application {
 
 
   @Override
-  public void init() {
+  public void init() throws IOException{
     log.info("Starting Up");
 
     DatabaseWrapper db = new DatabaseWrapper();
-    db.createAll();
+    db.isFirstRestore();
   }
 
   @Override
