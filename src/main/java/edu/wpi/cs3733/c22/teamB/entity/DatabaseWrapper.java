@@ -5,12 +5,14 @@ import java.util.List;
 public class DatabaseWrapper {
 
     private IDatabase<Employee> EmployeeDao;
+    private IDatabase<Location> LocationDao;
 
     private ConnectionManager connectionManager;
 
 
     public DatabaseWrapper() {
         EmployeeDao = new EmployeeDaoI();
+        LocationDao = new LocationDaoI();
 
         connectionManager = ConnectionManager.getInstance();
 
@@ -23,6 +25,7 @@ public class DatabaseWrapper {
     public void initClient() {
         connectionManager.setConnectionStrategy(true);
     }
+
 
 
     public void addEmployee(Employee employee) {
@@ -56,12 +59,35 @@ public class DatabaseWrapper {
 //        return list;
 //    }
 
+    public void addLocation(Location location) {
+        LocationDao.addValue(location);
+    }
+
+    public void createTableLocation() {
+        LocationDao.createTable();
+}
+    public void dropTableLocation() {
+        LocationDao.dropTable();
+    }
+    public void deleteLocation(String locationID) {
+        LocationDao.deleteValue(locationID);
+    }
+    public void updateLocation(Location location) {
+        LocationDao.updateValue(location);
+    }
+    public Location getLocation(String locationID) {
+        return LocationDao.getValue(locationID);
+    }
+    public List<Location> getAllLocation() {
+        return LocationDao.getAllValues();
+    }
+
     public void createTableEmployee() {
         EmployeeDao.createTable();
     }
 
     public void createAll() {
-//        createTableLocation();
+        createTableLocation();
         createTableEmployee();
 //        createTableMedicalEquipment();
 //        createTableSR();
@@ -76,7 +102,7 @@ public class DatabaseWrapper {
 //        dropTableSR();
 //        dropTableMedicalEquipment();
         dropTableEmployee();
-//        dropTableLocation();
+        dropTableLocation();
     }
 
 
