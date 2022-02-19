@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'open-sans';
+    src: url('../fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf');
+}
+
+.text {
+    -fx-font-family: open-sans;
+    -fx-font-size: 16px;
+}
+
+.root {
+}
+
+/* ----------- LABEL -------------- */
+.label {
+}
+
+.service-title {
+
+    -fx-font-fill: black;
+    -fx-font-size: 100px;
+
+}
+
+
+/* ----------- BUTTON -------------- */
+
+.submit-button {
+
+-fx-background-color: #002168;
+    -fx-text-fill: white;
+    -fx-padding: 0px 16px;
+
+}
+
+.clear-button {
+
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 5px;
+    -fx-border-color: black;
+
+}
+
+.service-button {
+
+    -fx-background-color: #7B94C9;
+    -fx-text-fill: white;
+    -fx-border-radius: 7;
+    -fx-font-size: 44px;
+
+}
+
+.toggle-button {
+
+}
+
+
+/* ----------- COMBO BOX -------------- */
+
+/* ------------- TEXT FIELD  -----------*/
+
+.text-field {
+
+         -fx-text-fill: #023047;
+        -fx-background-color: #a9a9a9 , white , white;
+       	-fx-background-insets: 0, 0 0 1 0;
+       	-fx-background-radius: 0;
+        }
+
+    .text-field:focused {
+        -fx-background-color: #a9a9a9 , white , white;
+       -fx-background-insets: 0, 0 0 1 0;
+    }
+
+
+.service-text-field {
+
+    -fx-text-fill: white;
+    -fx-background-color: #7B94C9 , #7B94C9 ,#7B94C9;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 3;
+    -fx-prompt-text-fill: white;
+}
+
+    .service-text-field:focused {
+           -fx-background-color: #7B94C9 , #7B94C9, #7B94C9;
+           -fx-background-insets: 0, 0 0 1 0;
+        }
+
+    .button-table-view {
+        -fx-background-color: #7B94C9;
+        -fx-text-fill: white;
+        -fx-border-radius: 1;
+        -fx-font-size: 10;
+    }
+
+
+/* ----------- TEXT FIELD ------------ TEXT AREA -------- PASSWORD FIELD -------------- */
+
+
+/*-------------------------- DRAWER -----------------*/
+
+/*----------------------- TABLE ---------------*/
+
+/* ----------- CHECK-BOX -------------- */
+
+/* ----------- RADIO-BUTTON -------------- */
+
+
+/* ----------- TOGGLE-BUTTON -------------- */
+
+
+
+/* ----------- SLIDER -------------- */
+
+
+
+/* ----------- FLOATING ACTION BUTTON -------------- */
+
+
+/* ----------- TAB PANE -------------- */
+.tab-pane {
+    -fx-background-color: white;
+
+
+}
+
+.tab {
+    -fx-background-color: #002168;
+    -fx-text-fill: white;
+    -fx-padding: 0px 16px;
+}
+
+/* ----------- BASIC COLORS (SVGS) -------------- */
+
+
+/* ----------- SECONDARY COLORS -------------- */

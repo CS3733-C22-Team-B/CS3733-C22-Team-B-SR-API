@@ -2,6 +2,7 @@ package edu.wpi.cs3733.c22.teamB.entity;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
 
 public class DatabaseWrapper {
@@ -178,6 +179,16 @@ public class DatabaseWrapper {
         dropTableLocation();
     }
 
+    public List<AbstractSR> getAllSR() {
+        List<AbstractSR> list = MainSRDao.getAllValues();
+
+        for (AbstractSR abstractSR : list) {
+            abstractSR = getSR(abstractSR.getSrID());
+        }
+
+        System.out.println(list);
+        return list;
+    }
 
 
     void restoreTableLocation() throws IOException {
@@ -232,6 +243,9 @@ public class DatabaseWrapper {
         } else{
             System.out.println("Not First Restore!");
         }
+    }
+    public Connection getConnection() {
+        return ConnectionManager.getInstance().getConnection();
     }
 
 
