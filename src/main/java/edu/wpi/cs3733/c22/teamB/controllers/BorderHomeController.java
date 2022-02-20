@@ -198,8 +198,6 @@ public class BorderHomeController implements Initializable{
                 anchorPane.getChildren().clear();
                 anchorPane.getChildren().add(childPane);
                 anchorPane.toBack();
-
-
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

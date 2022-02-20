@@ -2,6 +2,7 @@ package edu.wpi.cs3733.c22.teamB.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.BServiceRequestAPI;
 import edu.wpi.cs3733.c22.teamB.entity.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -123,6 +124,8 @@ public class MasterServiceRequestController {
 
         if (childSR == null) {
             clear(null);
+            if (BServiceRequestAPI.getInstance().getDestLocationID() != null)
+                locationField.setDisable(true);
             idField.setDisable(true);
             statusField.setDisable(true);
             assignedEmployeeField.setDisable(true);
@@ -202,7 +205,7 @@ public class MasterServiceRequestController {
         statusField.setValue("WAITING");
         assignedEmployeeField.setValue(employeeList.get(0).getEmployeeID() + ' ' + employeeList.get(0).getName());
         floorField.setValue("ALL");
-        locationField.setValue(null);
+        locationField.setValue(BServiceRequestAPI.getInstance().getDestLocationID());
         notesField.clear();
 
         childController.clear();
