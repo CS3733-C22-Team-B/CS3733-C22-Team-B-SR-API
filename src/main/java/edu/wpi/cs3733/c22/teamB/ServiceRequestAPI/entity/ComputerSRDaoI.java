@@ -16,7 +16,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
         Connection conn = ConnectionManager.getInstance().getConnection();
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO COMPUTERSR (srID, helpType) VALUES(?, ?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO COMPUTERSERVICESR (srID, helpType) VALUES(?, ?)");
             pstmt.setString(1, object.getSrID());
             pstmt.setString(2, object.getHelpType());
 
@@ -25,7 +25,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
             pstmt.close();
 
         } catch (SQLException e) {
-            System.out.println("Insert Into COMPUTERSR Table: Failed!");
+            System.out.println("Insert Into COMPUTERSERVICESR Table: Failed!");
             e.printStackTrace();
         }
     }
@@ -36,13 +36,13 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
         Connection conn = ConnectionManager.getInstance().getConnection();
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM COMPUTERSR WHERE srID = ?");
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM COMPUTERSERVICESR WHERE srID = ?");
             pstmt.setString(1, objectID);
             pstmt.executeUpdate();
 
             pstmt.close();
         } catch (SQLException e) {
-            System.out.println("Delete From COMPUTERSR Table Using SR ID: Failed!");
+            System.out.println("Delete From COMPUTERSERVICESR Table Using SR ID: Failed!");
             e.printStackTrace();
         }
     }
@@ -54,7 +54,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
         try {
             PreparedStatement pstmt =
                     conn.prepareStatement(
-                            "UPDATE COMPUTERSR SET HELPTYPE = ? WHERE srID = ?");
+                            "UPDATE COMPUTERSERVICESR SET HELPTYPE = ? WHERE srID = ?");
 
             pstmt.setString(1, object.getHelpType());
             pstmt.setString(2, object.getSrID());
@@ -63,7 +63,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
-            System.out.println("Update COMPUTERSR Node: Failed!");
+            System.out.println("Update COMPUTERSERVICESR Node: Failed!");
             e.printStackTrace();
             return;
         }
@@ -76,7 +76,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
         ComputerSR computerServiceSR = new ComputerSR();
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM COMPUTERSR WHERE srID = ?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM COMPUTERSERVICESR WHERE srID = ?");
             pstmt.setString(1, objectID);
             ResultSet rset = pstmt.executeQuery();
 
@@ -100,7 +100,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
 
             pstmt.close();
         } catch (SQLException e) {
-            System.out.println("Get COMPUTERSR Node Failed");
+            System.out.println("Get COMPUTERSERVICESR Node Failed");
             e.printStackTrace();
         }
         return computerServiceSR;
@@ -114,7 +114,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
 
         try{
             PreparedStatement pstmt =
-                    conn.prepareStatement("SELECT SRID FROM COMPUTERSR ");
+                    conn.prepareStatement("SELECT SRID FROM COMPUTERSERVICESR ");
             ResultSet rset = pstmt.executeQuery();
 
 
@@ -122,7 +122,7 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
                 computerServiceSRList.add(getValue(rset.getString("SRID")));
             }
         } catch (SQLException e) {
-            System.out.println("Get COMPUTERSR Node Failed");
+            System.out.println("Get COMPUTERSERVICESR Node Failed");
             e.printStackTrace();
         }
         return computerServiceSRList;
@@ -134,21 +134,21 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
 
         try {
             DatabaseMetaData dbmd = conn.getMetaData();
-            ResultSet rset = dbmd.getTables(null, null, "COMPUTERSR", null);
+            ResultSet rset = dbmd.getTables(null, null, "COMPUTERSERVICESR", null);
 
-            if (rset.next() && rset.getString(3).equals("COMPUTERSR")){
+            if (rset.next() && rset.getString(3).equals("COMPUTERSERVICESR")){
                 // table exists
             } else {
                 // Create table
                 Statement stmt = conn.createStatement();
-                stmt.execute("CREATE TABLE COMPUTERSR ( "
+                stmt.execute("CREATE TABLE COMPUTERSERVICESR ( "
                         + "srID VARCHAR(50) , "
                         + "helpType VARCHAR(50), "
                         + "PRIMARY KEY (srID),"
-                        + "CONSTRAINT FK_COMPUTERSR_MainSR FOREIGN KEY (srID) REFERENCES MainSR (srID) )"); //ON DELETE SET NULL
+                        + "CONSTRAINT FK_COMPUTERSERVICESR_MainSR FOREIGN KEY (srID) REFERENCES MainSR (srID) )"); //ON DELETE SET NULL
             }
         } catch (SQLException e) {
-            System.out.println("Create COMPUTERSR Table: Failed!");
+            System.out.println("Create COMPUTERSERVICESR Table: Failed!");
             e.printStackTrace();
         }
     }
@@ -159,9 +159,9 @@ public class ComputerSRDaoI implements IDatabase<ComputerSR>{
 
         try {
             Statement stmt = conn.createStatement();
-            stmt.execute("DROP TABLE COMPUTERSR");
+            stmt.execute("DROP TABLE COMPUTERSERVICESR");
         } catch (SQLException e) {
-            System.out.println("Drop COMPUTERSR Table: Failed!");
+            System.out.println("Drop COMPUTERSERVICESR Table: Failed!");
         }
     }
 

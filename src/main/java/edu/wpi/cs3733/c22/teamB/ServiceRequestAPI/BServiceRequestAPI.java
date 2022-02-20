@@ -35,7 +35,9 @@ public class BServiceRequestAPI {
             Scene scene = new Scene(root,
                     windowWidth != 0 ? windowWidth : -1,
                     windowHeight != 0 ? windowHeight : -1);
-            scene.getStylesheets().add(cssPath);
+            scene.getStylesheets().add(cssPath == null
+                    ? "/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/styles/default.css"
+                    : cssPath);
             srWindow.setScene(scene);
 
             srWindow.initModality(Modality.NONE);

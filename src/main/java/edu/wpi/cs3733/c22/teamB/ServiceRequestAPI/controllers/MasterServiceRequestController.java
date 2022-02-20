@@ -205,7 +205,10 @@ public class MasterServiceRequestController {
         statusField.setValue("WAITING");
         assignedEmployeeField.setValue(employeeList.get(0).getEmployeeID() + ' ' + employeeList.get(0).getName());
         floorField.setValue("ALL");
-        locationField.setValue(BServiceRequestAPI.getInstance().getDestLocationID());
+
+        Location loc = (new DatabaseWrapper()).getLocation(BServiceRequestAPI.getInstance().getDestLocationID());
+        locationField.setValue(loc.getNodeID() + ' ' + loc.getLongName());
+
         notesField.clear();
 
         childController.clear();
