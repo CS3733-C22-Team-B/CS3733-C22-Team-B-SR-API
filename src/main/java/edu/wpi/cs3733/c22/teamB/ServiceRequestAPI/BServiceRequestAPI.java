@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.c22.teamB.ServiceRequestAPI;
 
-import edu.wpi.cs3733.c22.teamB.Bapp;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +27,7 @@ public class BServiceRequestAPI {
         this.destLocationID = destLocationID;
         this.originLocationID = originLocationID;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/wpi/cs3733/c22/teamB/views/borderHome.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/borderHome.fxml"));
         try {
             Parent root = loader.load();
             Stage srWindow = new Stage();
