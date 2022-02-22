@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.c22.teamB.ServiceRequestAPI;
 
+import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.controllers.MasterServiceRequestController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ public class BServiceRequestAPI {
     private String originLocationID = null;
 
     private static BServiceRequestAPI instance;
+    private Stage srWindow;
 
     private BServiceRequestAPI() {}
 
@@ -27,11 +29,11 @@ public class BServiceRequestAPI {
         this.destLocationID = destLocationID;
         this.originLocationID = originLocationID;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/borderHome.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/ServiceRequestMenu.fxml"));
         try {
             Parent root = loader.load();
-            Stage srWindow = new Stage();
-            srWindow.setTitle("Bapp - Home Page");
+            srWindow = new Stage();
+            srWindow.setTitle("Team B Service Request");
             Scene scene = new Scene(root,
                     windowWidth != 0 ? windowWidth : -1,
                     windowHeight != 0 ? windowHeight : -1);
@@ -60,4 +62,7 @@ public class BServiceRequestAPI {
         return originLocationID;
     }
 
+    public Stage getSRWindow() {
+        return srWindow;
+    }
 }

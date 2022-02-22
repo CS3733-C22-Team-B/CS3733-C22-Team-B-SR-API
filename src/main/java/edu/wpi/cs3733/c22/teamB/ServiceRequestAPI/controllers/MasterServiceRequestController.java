@@ -66,10 +66,8 @@ public class MasterServiceRequestController {
             loader.setControllerFactory(param -> {
                 // Important: add your controller below in an else if
                 switch (srType) {
-
                     case "ComputerSR":
                         return new ComputerSRController((ComputerSR) sr);
-
                 }
                 return null;
 
