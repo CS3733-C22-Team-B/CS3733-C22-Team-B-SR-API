@@ -66,10 +66,8 @@ public class MasterServiceRequestController {
             loader.setControllerFactory(param -> {
                 // Important: add your controller below in an else if
                 switch (srType) {
-
                     case "ComputerSR":
                         return new ComputerSRController((ComputerSR) sr);
-
                 }
                 return null;
 
@@ -128,7 +126,6 @@ public class MasterServiceRequestController {
                 locationField.setDisable(true);
             idField.setDisable(true);
             statusField.setDisable(true);
-            assignedEmployeeField.setDisable(true);
         }
         else {
             idField.setText(childSR.getSrID());
@@ -206,22 +203,15 @@ public class MasterServiceRequestController {
         assignedEmployeeField.setValue(employeeList.get(0).getEmployeeID() + ' ' + employeeList.get(0).getName());
         floorField.setValue("ALL");
 
-        Location loc = (new DatabaseWrapper()).getLocation(BServiceRequestAPI.getInstance().getDestLocationID());
-        locationField.setValue(loc.getNodeID() + ' ' + loc.getLongName());
+        if (BServiceRequestAPI.getInstance().getDestLocationID() != null) {
+            Location loc = (new DatabaseWrapper()).getLocation(BServiceRequestAPI.getInstance().getDestLocationID());
+            locationField.setValue(loc.getNodeID() + ' ' + loc.getLongName());
+        } else
+            locationField.setValue(null);
 
         notesField.clear();
 
         childController.clear();
-    }
-
-    @FXML private void back(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/ServiceRequestMenu.fxml"));
-            BorderHomeController.curBorderHomeController.changeNode(loader);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
     @FXML private void onFloorFieldChange(ActionEvent actionEvent) {
@@ -245,6 +235,16 @@ public class MasterServiceRequestController {
 
             default:
                 throw new RuntimeException("srType invalid");
+        }
+    }
+
+    public void goToEmployeeTable(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/EmployeeTable.fxml"));
+            BServiceRequestAPI.getInstance().getSRWindow().getScene().setRoot(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

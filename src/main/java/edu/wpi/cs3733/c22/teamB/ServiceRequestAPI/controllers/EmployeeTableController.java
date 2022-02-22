@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.BServiceRequestAPI;
 import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.Bapp;
 import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.entity.DatabaseWrapper;
 import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.entity.Employee;
@@ -36,9 +37,6 @@ public class EmployeeTableController {
     @FXML private JFXButton deleteButton;
     @FXML private TableView<Employee> table;
     @FXML private JFXButton loadButton;
-
-
-
 
     private enum Function {ADD, MODIFY, DELETE, NOTHING, IDLOOKUP};
     Function func = Function.NOTHING;
@@ -108,17 +106,6 @@ public class EmployeeTableController {
 
         List<Employee> listOfEmployees = db.getAllEmployee();
         table.getItems().addAll(listOfEmployees); // create and add object
-    }
-
-    @FXML void goToHome(ActionEvent event) {
-        // Try to go home
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/Home.fxml"));
-            Bapp.getPrimaryStage().getScene().setRoot(root);
-            // Print stack trace if unable to go home
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
     @FXML
@@ -268,5 +255,17 @@ public class EmployeeTableController {
         phoneNumberField.setVisible(false);
 
         func = Function.IDLOOKUP;
+    }
+
+    @FXML
+    private void goToSRMenu(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/ServiceRequestMenu.fxml"));
+            Parent root = loader.load();
+            BServiceRequestAPI.getInstance().getSRWindow().getScene().setRoot(root);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
