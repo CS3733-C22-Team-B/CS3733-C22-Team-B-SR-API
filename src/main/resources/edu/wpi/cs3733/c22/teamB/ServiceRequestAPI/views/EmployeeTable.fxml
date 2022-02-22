@@ -64,5 +64,6 @@
             <TextField fx:id="accessLevel" promptText="accessLevel" GridPane.columnIndex="4" />
             </children>
         </GridPane>
+      <JFXButton layoutX="58.0" layoutY="552.0" onAction="#goToSRMenu" text="Service Request Menu" />
     </children>
 </AnchorPane>

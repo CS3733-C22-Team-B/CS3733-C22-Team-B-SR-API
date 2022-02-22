@@ -212,16 +212,6 @@ public class MasterServiceRequestController {
         childController.clear();
     }
 
-    @FXML private void back(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/ServiceRequestMenu.fxml"));
-            BorderHomeController.curBorderHomeController.changeNode(loader);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     @FXML private void onFloorFieldChange(ActionEvent actionEvent) {
         // change locationField accordingly
         locationField.setValue(null);
@@ -243,6 +233,16 @@ public class MasterServiceRequestController {
 
             default:
                 throw new RuntimeException("srType invalid");
+        }
+    }
+
+    public void goToEmployeeTable(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/EmployeeTable.fxml"));
+            BServiceRequestAPI.getInstance().getSRWindow().getScene().setRoot(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }
