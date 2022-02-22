@@ -126,7 +126,6 @@ public class MasterServiceRequestController {
                 locationField.setDisable(true);
             idField.setDisable(true);
             statusField.setDisable(true);
-            assignedEmployeeField.setDisable(true);
         }
         else {
             idField.setText(childSR.getSrID());
@@ -204,8 +203,11 @@ public class MasterServiceRequestController {
         assignedEmployeeField.setValue(employeeList.get(0).getEmployeeID() + ' ' + employeeList.get(0).getName());
         floorField.setValue("ALL");
 
-        Location loc = (new DatabaseWrapper()).getLocation(BServiceRequestAPI.getInstance().getDestLocationID());
-        locationField.setValue(loc.getNodeID() + ' ' + loc.getLongName());
+        if (BServiceRequestAPI.getInstance().getDestLocationID() != null) {
+            Location loc = (new DatabaseWrapper()).getLocation(BServiceRequestAPI.getInstance().getDestLocationID());
+            locationField.setValue(loc.getNodeID() + ' ' + loc.getLongName());
+        } else
+            locationField.setValue(null);
 
         notesField.clear();
 

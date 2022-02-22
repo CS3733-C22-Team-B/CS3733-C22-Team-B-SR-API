@@ -108,17 +108,6 @@ public class EmployeeTableController {
         table.getItems().addAll(listOfEmployees); // create and add object
     }
 
-    @FXML void goToHome(ActionEvent event) {
-        // Try to go home
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/views/Home.fxml"));
-            Bapp.getPrimaryStage().getScene().setRoot(root);
-            // Print stack trace if unable to go home
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     @FXML
     private void addEmployee(ActionEvent actionEvent) {
         gridPane.setVisible(true);
