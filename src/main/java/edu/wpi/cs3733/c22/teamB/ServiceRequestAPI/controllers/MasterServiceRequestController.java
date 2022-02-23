@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class MasterServiceRequestController {
+public class MasterServiceRequestController{
     @FXML private JFXButton submitButton;
     @FXML private JFXButton clearButton;
     @FXML private JFXButton backButton;
@@ -32,6 +32,8 @@ public class MasterServiceRequestController {
     @FXML private JFXComboBox<String> locationField;
     @FXML private AnchorPane srPane;
     @FXML private Label srLabel;
+    @FXML private Pane contentPane;
+    @FXML private AnchorPane anchorPane;
 
     private Pane childPane;
     private IController childController;
@@ -81,6 +83,7 @@ public class MasterServiceRequestController {
 
     // DO NOT TOUCH THIS
     @FXML private void initialize() {
+
         DatabaseWrapper dw = new DatabaseWrapper();
         // idField
 
@@ -152,7 +155,7 @@ public class MasterServiceRequestController {
     }
 
     private String getLabel() {
-        String name = "";
+        String name = "Computer Service Request";
         if (childSRType.equals("ExternalTransportSR")){
             name =  "External Patient Transport Service Request";
         }

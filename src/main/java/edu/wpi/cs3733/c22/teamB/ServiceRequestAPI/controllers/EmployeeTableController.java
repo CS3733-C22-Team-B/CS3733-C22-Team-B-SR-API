@@ -2,7 +2,6 @@ package edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.BServiceRequestAPI;
-import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.Bapp;
 import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.entity.DatabaseWrapper;
 import edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.entity.Employee;
 import javafx.event.ActionEvent;
@@ -14,12 +13,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.List;
 
-public class EmployeeTableController {
+public class EmployeeTableController{
 
     @FXML private GridPane gridPane;
     @FXML private JFXButton confirmButton;
@@ -37,6 +38,8 @@ public class EmployeeTableController {
     @FXML private JFXButton deleteButton;
     @FXML private TableView<Employee> table;
     @FXML private JFXButton loadButton;
+    @FXML private Pane contentPane;
+    @FXML private AnchorPane anchorPane;
 
     private enum Function {ADD, MODIFY, DELETE, NOTHING, IDLOOKUP};
     Function func = Function.NOTHING;
@@ -49,6 +52,8 @@ public class EmployeeTableController {
 
     @FXML
     private void initialize() throws NullPointerException {
+
+
         modifyButton.setDisable(true);
         deleteButton.setDisable(true);
 
