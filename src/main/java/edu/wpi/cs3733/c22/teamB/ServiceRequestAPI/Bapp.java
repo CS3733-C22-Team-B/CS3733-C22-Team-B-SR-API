@@ -23,7 +23,7 @@ public class Bapp extends Application {
   public void start(Stage primaryStage) throws IOException, ServiceException {
     this.primaryStage = primaryStage;
 
-    BServiceRequestAPI.getInstance().run(0, 0, 0, 0, "/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/styles/default.css", null, null);
+    BServiceRequestAPI.getInstance().run(0, 0, 0, 0, "/edu/wpi/cs3733/c22/teamB/ServiceRequestAPI/styles/style.css", null, null);
   }
 
   @Override
