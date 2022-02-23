@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.c22.teamB.ServiceRequestAPI.controllers.MasterServiceRequestController">
    <children>
@@ -28,7 +29,10 @@
             <Label layoutX="51.0" layoutY="255.0" text="Notes" />
             <AnchorPane fx:id="srPane" layoutX="51.0" layoutY="54.0" prefHeight="127.0" prefWidth="324.0" />
             <Line endX="424.79998779296875" endY="1.1444091796875E-5" layoutX="130.0" layoutY="42.0" startX="-84.8000259399414" startY="1.1444091796875E-5" style="-fx-fill: #002168;" />
-            <Label fx:id="srLabel" layoutX="45.0" layoutY="14.0" prefHeight="17.0" prefWidth="511.0" text="Label" />
+            <Label fx:id="srLabel" layoutX="45.0" layoutY="14.0" prefHeight="17.0" prefWidth="511.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
             <JFXButton layoutX="409.0" layoutY="341.0" onAction="#goToEmployeeTable" prefHeight="25.0" prefWidth="149.0" style="-fx-border-color: #002168; -fx-background-color: #99a6c2;" styleClass="jfx-button" stylesheets="@../styles/default.css" text="Employee Table" textFill="WHITE" />
             <JFXComboBox fx:id="assignedEmployeeField" layoutX="409.0" layoutY="219.0" prefHeight="25.0" prefWidth="149.0" styleClass="jfx-combo-box" stylesheets="@../styles/default.css" />
          </children>
