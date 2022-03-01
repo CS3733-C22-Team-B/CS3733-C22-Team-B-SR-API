@@ -128,7 +128,6 @@ public class MasterServiceRequestController{
             if (BServiceRequestAPI.getInstance().getDestLocationID() != null)
                 locationField.setDisable(true);
             idField.setDisable(true);
-            statusField.setDisable(true);
         }
         else {
             idField.setText(childSR.getSrID());
